@@ -19,9 +19,9 @@ public class EnhCanvas {
     @Getter @Setter
     Path touchPath = new Path();
     @Getter @Setter
-    private ArrayList<Bitmap> bitmaps = new ArrayList();
+    private static ArrayList<Bitmap> bitmaps = new ArrayList();
     @Getter @Setter
-    private ArrayList<Canvas> canvases = new ArrayList<>();
+    private static ArrayList<Canvas> canvases = new ArrayList<>();
 
     public EnhCanvas() {}
 
@@ -31,7 +31,7 @@ public class EnhCanvas {
         getCanvas(getLength()-1).drawColor(0, PorterDuff.Mode.CLEAR);
     }
 
-    public Bitmap getBitmap(int i) {
+    public static Bitmap getBitmap(int i) {
         return bitmaps.get(i);
     }
 

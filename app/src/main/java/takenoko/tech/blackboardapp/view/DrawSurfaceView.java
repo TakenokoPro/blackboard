@@ -1,5 +1,6 @@
 package takenoko.tech.blackboardapp.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.PixelFormat;
@@ -10,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import takenoko.tech.blackboardapp.MainActivity;
 import takenoko.tech.blackboardapp.model.DrawSurfaceModel;
 import takenoko.tech.blackboardapp.model.SensitiveTouchModel;
 import takenoko.tech.blackboardapp.model.StaticModel;
@@ -24,9 +26,9 @@ public class DrawSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     final static String log = "----DrawSurfaceView----";
 
     // モデル
-    DrawSurfaceModel model = new DrawSurfaceModel();
-    SensitiveTouchModel sens;
-    EnhCanvas eCanvas = new EnhCanvas();
+    private DrawSurfaceModel model = new DrawSurfaceModel();
+    private SensitiveTouchModel sens;
+    private static EnhCanvas eCanvas = new EnhCanvas();
 
     // スレッドクラス
     private SurfaceHolder holder;
@@ -53,20 +55,23 @@ public class DrawSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     // 不要な表示のマスク
     private Canvas doMask(Canvas canvas) {
         if(StaticModel.getMenuMode() != StaticModel.MenuMode.INVISIBLE) {
-            canvas.drawRect(sens.getMenuMasKRect(), sens.getEraserRect());
+            canvas.drawRect(sens.getMenuMaskRect(), sens.getEraserRect());
         }
         if(StaticModel.getDebugMode() == StaticModel.DebugMode.VIEW) {
-            canvas.drawRect(sens.getDebugerMasKRect(), sens.getEraserRect());
+            canvas.drawRect(sens.getDebugerMaskRect(), sens.getEraserRect());
         }
         if(StaticModel.getViewStatus() == StaticModel.ViewStatus.VIEW) {
-            canvas.drawOval(sens.getStatusMasKRect(), sens.getEraserRect());
+            canvas.drawOval(sens.getStatusMaskRect(), sens.getEraserRect());
+        }
+        if(StaticModel.getDialogMode() != StaticModel.DialogMode.NONE) {
+            canvas.drawRect(sens.getDialogMaskRect(), sens.getEraserRect());
         }
         return canvas;
     }
-    // イベント
-    private void doTouchEvent() {
-
-
+    // シェア
+    public static void share(Activity activity) {
+        StaticModel.setDialogMode(StaticModel.DialogMode.SHARE);
+        ((MainActivity)activity).upDate();
     }
     // クリア
     public void clear() {
@@ -107,6 +112,7 @@ public class DrawSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         Log.i(log, event.getX() + "," + event.getY());
         float x = event.getX();
         float y = event.getY();
+        if(StaticModel.getDialogMode() != StaticModel.DialogMode.NONE) return true;
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 eCanvas.getTouchPath().moveTo(x, y);

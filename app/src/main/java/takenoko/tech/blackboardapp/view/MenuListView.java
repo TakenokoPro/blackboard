@@ -1,5 +1,6 @@
 package takenoko.tech.blackboardapp.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -32,6 +33,9 @@ public class MenuListView extends ListView {
         model.getAdapter().add("けしごむ", getResources().getDrawable(R.drawable.ic_blackbord_ere), new OnClickToEraser());
         model.getAdapter().add("さくじょ", getResources().getDrawable(R.drawable.ic_garbage_can), new OnClickToClear());
         model.getAdapter().add("ほぞん", getResources().getDrawable(R.drawable.ic_download), new OnClickToDownload());
+        model.getAdapter().add("きょうゆう", getResources().getDrawable(R.drawable.ic_share), new OnClickToShare());
+        model.getAdapter().add("せってい", getResources().getDrawable(R.drawable.ic_setting), new OnClickToSetting());
+        model.getAdapter().add("とじる", getResources().getDrawable(R.drawable.ic_close), new OnClickToClose());
         setAdapter(model.getAdapter());
     }
 
@@ -69,6 +73,22 @@ public class MenuListView extends ListView {
         public void onClick(View view) {
             Log.i(log, "OnClickToDownload");
             Debuger.print(context, "OnClickToDownload");
+            DrawSurfaceView.share((Activity)context);
+        }
+    }
+    private class OnClickToShare implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Log.i(log, "OnClickToShare");
+            Debuger.print(context, "OnClickToShare");
+            DrawSurfaceView.share((Activity)context);
+        }
+    }
+    private class OnClickToSetting implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Log.i(log, "OnClickToSetting");
+            Debuger.print(context, "OnClickToSetting");
         }
     }
     private class OnClickToClose implements View.OnClickListener {

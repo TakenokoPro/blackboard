@@ -33,9 +33,10 @@ public class SensitiveTouchModel implements Serializable {
     int strokeColor = Color.argb(200, 240, 240, 240);
 
     // maskRect
-    @Getter RectF menuMasKRect;
-    @Getter RectF debugerMasKRect;
-    @Getter RectF statusMasKRect;
+    @Getter RectF menuMaskRect;
+    @Getter RectF debugerMaskRect;
+    @Getter RectF statusMaskRect;
+    @Getter RectF dialogMaskRect;
 
     public SensitiveTouchModel(Context context) {
         this.context = context;
@@ -60,23 +61,29 @@ public class SensitiveTouchModel implements Serializable {
     }
 
     public void settingMask(DrawSurfaceModel model) {
-        menuMasKRect = new RectF(
+        menuMaskRect = new RectF(
                 0,
                 0,
                 context.getResources().getDimension(R.dimen.menu_list_width),
                 model.getSurfaceY()
         );
-        debugerMasKRect = new RectF(
+        debugerMaskRect = new RectF(
                 0,
                 model.getSurfaceY() - context.getResources().getDimension(R.dimen.debug_height),
                 model.getSurfaceX(),
                 model.getSurfaceY()
         );
-        statusMasKRect = new RectF(
+        statusMaskRect = new RectF(
                 model.getSurfaceX(),
                 0,
                 model.getSurfaceX() - context.getResources().getDimension(R.dimen.status_height),
                 context.getResources().getDimension(R.dimen.status_height)
+        );
+        dialogMaskRect = new RectF(
+                0,
+                0,
+                model.getSurfaceX(),
+                model.getSurfaceY()
         );
     }
 

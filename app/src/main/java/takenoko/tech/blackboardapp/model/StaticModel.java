@@ -33,4 +33,9 @@ public class StaticModel {
     public enum ViewStatus{ NONE, VIEW }
     @Getter @Setter
     static ViewStatus viewStatus = ViewStatus.VIEW;
+
+    /** ダイアログ表示 */
+    public enum DialogMode{ NONE, SHARE }
+    @Getter @Setter
+    static DialogMode dialogMode = DialogMode.NONE;
 }

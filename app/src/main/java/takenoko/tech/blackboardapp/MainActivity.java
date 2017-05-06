@@ -12,6 +12,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import takenoko.tech.blackboardapp.model.StaticModel;
 import takenoko.tech.blackboardapp.util.Debuger;
+import takenoko.tech.blackboardapp.util.EnhCanvas;
+import takenoko.tech.blackboardapp.util.Dialog;
 
 /**
  * Created by たけのこ on 2017/05/04.
@@ -20,12 +22,21 @@ import takenoko.tech.blackboardapp.util.Debuger;
 public class MainActivity extends AppCompatActivity {
 
     final static String log = "----MainActivty----";
+
     @BindView(R.id.menu_layout) RelativeLayout menuLayout;
     @BindView(R.id.open_menu_image) ImageView openMenuImage;
     @BindView(R.id.open_menu_text) TextView openMenuText;
+    //-----------------------------------------------------
     @BindView(R.id.debug_text) TextView debugText;
+    //-----------------------------------------------------
     @BindView(R.id.status_image) ImageView statusImage;
     @BindView(R.id.status_text) TextView statusText;
+    //-----------------------------------------------------
+    @BindView(R.id.dialog_layout)RelativeLayout dialogLayout;
+    @BindView(R.id.dialog_title)TextView dialogTitle;
+    @BindView(R.id.dialog_image)ImageView dialogImage;
+    @BindView(R.id.dialog_agree)TextView dialoAgreeButton;
+    @BindView(R.id.dialog_disagree)TextView dialogDisagreeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Debuger.button(this);
+        Dialog.button(this);
         upDate();
     }
 
@@ -62,6 +74,16 @@ public class MainActivity extends AppCompatActivity {
                 statusText.setText("けしごむ");
                 break;
             default:
+                break;
+        }
+        switch (StaticModel.getDialogMode()) {
+            case SHARE:
+                dialogLayout.setVisibility(View.VISIBLE);
+                dialogTitle.setText("シェア");
+                dialogImage.setImageBitmap(EnhCanvas.getBitmap(0));
+                break;
+            default:
+                dialogLayout.setVisibility(View.INVISIBLE);
                 break;
         }
     }
