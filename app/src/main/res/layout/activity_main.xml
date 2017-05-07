@@ -57,6 +57,6 @@
     <include layout="@layout/layout_status" />
     <include layout="@layout/layout_setting" />
     <include layout="@layout/layout_dialog" />
-    <!--android:background="#99ff5e00"-->
+    <include layout="@layout/layout_overlay" />
 
 </RelativeLayout>

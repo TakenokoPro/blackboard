@@ -11,6 +11,8 @@
     <string name="menu_setting">せってい</string>
     <!-- ステータス -->
     <string name="status_mode">モード</string>
+    <!-- オーバーレイ -->
+    <string name="overlay_loading">ロード中</string>
     <!-- 全消去ダイアログ -->
     <string name="dialog_clear_title">さくじょ</string>
     <string name="dialog_clear_text">描いた画像を消去してもよろしいですか？\n※消去した画像は戻せません。</string>

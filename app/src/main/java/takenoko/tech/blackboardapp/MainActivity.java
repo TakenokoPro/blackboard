@@ -11,10 +11,9 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import takenoko.tech.blackboardapp.model.StaticModel;
-import takenoko.tech.blackboardapp.util.Debuger;
-import takenoko.tech.blackboardapp.util.Dialog;
 import takenoko.tech.blackboardapp.model.EnhCanvasModel;
+import takenoko.tech.blackboardapp.model.StaticModel;
+import takenoko.tech.blackboardapp.util.Dialog;
 import takenoko.tech.blackboardapp.util.Setting;
 import takenoko.tech.blackboardapp.util.UtilStrage;
 
@@ -30,7 +29,14 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.open_menu_image) ImageView openMenuImage;
     @BindView(R.id.open_menu_text) TextView openMenuText;
     //-----------------------------------------------------
+    @BindView(R.id.debug_layout) RelativeLayout debugLayout;
     @BindView(R.id.debug_text) TextView debugText;
+    @BindView(R.id.save1_button) TextView save1Button;
+    @BindView(R.id.load1_button) TextView load1Button;
+    @BindView(R.id.save2_button) TextView save2Button;
+    @BindView(R.id.load2_button) TextView load2Button;
+    //-----------------------------------------------------
+    @BindView(R.id.overlay_layout) RelativeLayout overlayLayout;
     //-----------------------------------------------------
     @BindView(R.id.status_layout) RelativeLayout statusLayout;
     @BindView(R.id.status_image) ImageView statusImage;
@@ -55,19 +61,19 @@ public class MainActivity extends AppCompatActivity {
         Log.e(log, "onCreate");
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Debuger.button(this);
         Dialog.button(this);
         Setting.button(this);
         upDate();
+        debug();
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(log, "onResume  " + EnhCanvasModel.getBitmaps().size());
+        overlayLayout.setVisibility(View.VISIBLE);
         UtilStrage.load(this, null);
+        overlayLayout.setVisibility(View.INVISIBLE);
     }
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -132,11 +138,13 @@ public class MainActivity extends AppCompatActivity {
                 statusLayout.setVisibility(View.INVISIBLE);
                 statusSub.setVisibility(View.INVISIBLE);
                 menuLayout.setVisibility(View.INVISIBLE);
+                debugLayout.setVisibility(View.INVISIBLE);
                 openMenuImage.setImageDrawable(getResources().getDrawable(R.drawable.ic_menu));
                 openMenuText.setText(getResources().getString(R.string.menu_open_button));
                 break;
             default:
                 menuLayout.setVisibility(View.VISIBLE);
+                debugLayout.setVisibility(View.VISIBLE);
                 openMenuImage.setImageDrawable(getResources().getDrawable(R.drawable.ic_close));
                 openMenuText.setText(getResources().getString(R.string.menu_close_button));
                 break;
@@ -149,5 +157,44 @@ public class MainActivity extends AppCompatActivity {
                 settingLayout.setVisibility(View.INVISIBLE);
                 break;
         }
+    }
+
+    private void debug() {
+        overlayLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {}
+        });
+        save1Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                overlayLayout.setVisibility(View.VISIBLE);
+                UtilStrage.store(getBaseContext(), "storageModel1.obj");
+                overlayLayout.setVisibility(View.INVISIBLE);
+            }
+        });
+        load1Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                overlayLayout.setVisibility(View.VISIBLE);
+                UtilStrage.load(getBaseContext(), "storageModel1.obj");
+                overlayLayout.setVisibility(View.INVISIBLE);
+            }
+        });
+        save2Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                overlayLayout.setVisibility(View.VISIBLE);
+                UtilStrage.store(getBaseContext(), "storageModel2.obj");
+                overlayLayout.setVisibility(View.INVISIBLE);
+            }
+        });
+        load2Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                overlayLayout.setVisibility(View.VISIBLE);
+                UtilStrage.load(getBaseContext(), "storageModel2.obj");
+                overlayLayout.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/debug_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="0dp"
@@ -18,11 +19,31 @@
             android:layout_width="match_parent"
             android:textColor="#FFF"/>
     </ScrollView>
-    <Button
-        android:id="@+id/debug_button"
-        android:layout_height="wrap_content"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:text="デバック"/>
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/menu_list_width"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/save1_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="s1"/>
+        <Button
+            android:id="@+id/load1_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="l1"/>
+        <Button
+            android:id="@+id/save2_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="s2"/>
+        <Button
+            android:id="@+id/load2_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="l2"/>
+    </LinearLayout>
 </RelativeLayout>

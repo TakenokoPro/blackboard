@@ -3,7 +3,6 @@ package takenoko.tech.blackboardapp.view;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +52,6 @@ public class StatusColorList extends ListView {
             holder.textView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.i(log, "size: " + colorArray[i] + "--" + color);
                     SensitiveTouchModel.setStrokeColor(color);
                     SensitiveTouchModel.settingPenLine();
                     notifyDataSetChanged();

@@ -52,7 +52,7 @@ public class EnhCanvasModel {
     }
 
     public Canvas getCanvas(int i) {
-        return canvases.get(i);
+        try { return canvases.get(i); } catch (Exception e) { return new Canvas(); }
     }
 
     public static int getLength() {

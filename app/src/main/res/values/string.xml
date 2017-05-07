@@ -11,6 +11,8 @@
     <string name="menu_setting">SETTING</string>
     <!-- ステータス -->
     <string name="status_mode">MODE</string>
+    <!-- オーバーレイ -->
+    <string name="overlay_loading">loading now...</string>
     <!-- 全消去ダイアログ -->
     <string name="dialog_clear_title">Clear</string>
     <string name="dialog_clear_text">Are you sure you want to delete the image?\n※Not be restored.</string>
