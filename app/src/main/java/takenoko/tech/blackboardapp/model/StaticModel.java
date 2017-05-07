@@ -38,4 +38,9 @@ public class StaticModel {
     public enum DialogMode{ NONE, SHARE , CLEAR}
     @Getter @Setter
     static DialogMode dialogMode = DialogMode.NONE;
+
+    /** 設定表示 */
+    public enum SettingMode{ NONE, VIEW }
+    @Getter @Setter
+    static SettingMode settingMode = SettingMode.NONE;
 }

@@ -22,6 +22,7 @@ public class SettingModel implements Serializable {
     public enum BackColor{ BLACK_BOARD, GREEN_BOARD, WHITE_BOARD }
     @Getter @Setter
     public static BackColor backColor = BackColor.GREEN_BOARD;
+    @Getter
     public static HashMap<BackColor, Integer> backColorHashMap = new HashMap<BackColor, Integer>() {{
         put(BLACK_BOARD, Color.argb(255, 42, 42, 40));
         put(GREEN_BOARD, Color.argb(255, 20, 50, 20));

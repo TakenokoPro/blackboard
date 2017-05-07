@@ -29,14 +29,14 @@ public class MenuListView extends ListView {
         super(context, attrs);
         this.context = context;
         model.setAdapter(new ListViewAdapter(context, R.layout.list_item));
-        model.getAdapter().add("ペン", getResources().getDrawable(R.drawable.ic_crayon), new OnClickToPen());
-        model.getAdapter().add("けしごむ", getResources().getDrawable(R.drawable.ic_blackbord_ere), new OnClickToEraser());
-        model.getAdapter().add("さくじょ", getResources().getDrawable(R.drawable.ic_garbage_can), new OnClickToClear());
+        model.getAdapter().add(getResources().getString(R.string.menu_pen), getResources().getDrawable(R.drawable.ic_crayon), new OnClickToPen());
+        model.getAdapter().add(getResources().getString(R.string.menu_eraser), getResources().getDrawable(R.drawable.ic_blackbord_ere), new OnClickToEraser());
+        model.getAdapter().add(getResources().getString(R.string.menu_clear), getResources().getDrawable(R.drawable.ic_garbage_can), new OnClickToClear());
         // model.getAdapter().add("ほぞん", getResources().getDrawable(R.drawable.ic_download), new OnClickToDownload());
-        model.getAdapter().add("きょうゆう", getResources().getDrawable(R.drawable.ic_share), new OnClickToShare());
-//        model.getAdapter().add("とりこみ", getResources().getDrawable(R.drawable.ic_image), new OnClickToShare());
-//        model.getAdapter().add("せってい", getResources().getDrawable(R.drawable.ic_setting), new OnClickToSetting());
-        model.getAdapter().add("とじる", getResources().getDrawable(R.drawable.ic_close), new OnClickToClose());
+        model.getAdapter().add(getResources().getString(R.string.menu_share), getResources().getDrawable(R.drawable.ic_share), new OnClickToShare());
+        // model.getAdapter().add(getResources().getString(R.string.menu_import), getResources().getDrawable(R.drawable.ic_image), new OnClickToImport());
+        model.getAdapter().add(getResources().getString(R.string.menu_setting), getResources().getDrawable(R.drawable.ic_setting), new OnClickToSetting());
+        model.getAdapter().add(getResources().getString(R.string.menu_close_button), getResources().getDrawable(R.drawable.ic_close), new OnClickToClose());
         setAdapter(model.getAdapter());
     }
 
@@ -61,7 +61,6 @@ public class MenuListView extends ListView {
         public void onClick(View view) {
             Log.i(log, "OnClickToClear");
             StaticModel.setDialogMode(StaticModel.DialogMode.CLEAR);
-            StaticModel.setClearMode(StaticModel.ClearMode.CLEAR);
             ((MainActivity)context).upDate();
         }
     }
@@ -81,11 +80,20 @@ public class MenuListView extends ListView {
             DrawSurfaceView.share((Activity)context);
         }
     }
+    private class OnClickToImport implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Log.i(log, "OnClickToImport");
+            Debuger.print(context, "OnClickToImport");
+        }
+    }
     private class OnClickToSetting implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             Log.i(log, "OnClickToSetting");
             Debuger.print(context, "OnClickToSetting");
+            StaticModel.setSettingMode(StaticModel.SettingMode.VIEW);
+            ((MainActivity)context).upDate();
         }
     }
     private class OnClickToClose implements View.OnClickListener {

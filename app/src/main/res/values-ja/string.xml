@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- メニュー -->
+    <string name="menu_open_button">メニュー</string>
+    <string name="menu_close_button">とじる</string>
+    <string name="menu_pen">ペン</string>
+    <string name="menu_eraser">けしごむ</string>
+    <string name="menu_clear">さくじょ</string>
+    <string name="menu_share">シェア</string>
+    <string name="menu_import">とりこみ</string>
+    <string name="menu_setting">せってい</string>
+    <!-- ステータス -->
+    <string name="status_mode">モード</string>
+    <!-- 全消去ダイアログ -->
+    <string name="dialog_clear_title">さくじょ</string>
+    <string name="dialog_clear_text">描いた画像を消去してもよろしいですか？\n※消去した画像は戻せません。</string>
+    <string name="dialog_clear_agree">削除</string>
+    <string name="dialog_clear_disagree">キャンセル</string>
+    <!-- シェアダイアログ -->
+    <string name="dialog_share_title">プレビュー</string>
+    <string name="dialog_share_text">画像を他のアプリで共有しますか？\n※背景色は設定で変更できます。</string>
+    <string name="dialog_share_agree">シェア</string>
+    <string name="dialog_share_disagree">キャンセル</string>
+    <!-- 設定ダイアログ -->
+    <string name="dialog_setting_title">せってい</string>
+    <string name="dialog_setting_background">保存時の背景色</string>
+    <string name="dialog_setting_close">とじる</string>
+</resources>

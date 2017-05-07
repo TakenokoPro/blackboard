@@ -78,7 +78,9 @@ public class Dialog {
         StaticModel.setDialogMode(StaticModel.DialogMode.NONE);
     }
     private static void clickToClear(ClickAction action, Activity activity) {
-        if(action == ClickAction.AGREE) {}
+        if(action == ClickAction.AGREE) {
+            StaticModel.setClearMode(StaticModel.ClearMode.CLEAR);
+        }
         StaticModel.setDialogMode(StaticModel.DialogMode.NONE);
     }
 }

@@ -54,7 +54,8 @@
             android:textSize="10dp" />
     </takenoko.tech.blackboardapp.view.OpenMenuView>
     <include layout="@layout/layout_status" />
-    <include layout="@layout/layout_dialog"/>
+    <include layout="@layout/layout_setting" />
+    <include layout="@layout/layout_dialog" />
     <!--android:background="#99ff5e00"-->
 
 </RelativeLayout>

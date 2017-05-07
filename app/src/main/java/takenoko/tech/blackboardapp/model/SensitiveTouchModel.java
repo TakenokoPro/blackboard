@@ -39,11 +39,11 @@ public class SensitiveTouchModel implements Serializable {
     static HashMap<String, Integer> colorMap = new HashMap<>();
 
     // maskRect
-    @Getter RectF menuMaskRect;
-    @Getter RectF debugerMaskRect;
-    @Getter RectF statusMaskRect;
-    @Getter RectF subStatusMaskRect;
-    @Getter RectF dialogMaskRect;
+    @Getter RectF menuMaskRect = new RectF();
+    @Getter RectF debugerMaskRect = new RectF();
+    @Getter RectF statusMaskRect = new RectF();
+    @Getter RectF subStatusMaskRect = new RectF();
+    @Getter RectF fullMaskRect = new RectF();
 
     public SensitiveTouchModel(Context context) {
         this.context = context;
@@ -102,7 +102,7 @@ public class SensitiveTouchModel implements Serializable {
                 model.getSurfaceX() - context.getResources().getDimension(R.dimen.status_height) - context.getResources().getDimension(R.dimen.status_margin),
                 model.getSurfaceY()
         );
-        dialogMaskRect = new RectF(
+        fullMaskRect = new RectF(
                 0,
                 0,
                 model.getSurfaceX(),

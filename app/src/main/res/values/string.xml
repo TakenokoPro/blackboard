@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- メニュー -->
+    <string name="menu_open_button">MENU</string>
+    <string name="menu_close_button">CLOSE</string>
+    <string name="menu_pen">PEN</string>
+    <string name="menu_eraser">ERASER</string>
+    <string name="menu_clear">CLEAR</string>
+    <string name="menu_share">SHARE</string>
+    <string name="menu_import">IMPORT</string>
+    <string name="menu_setting">SETTING</string>
+    <!-- ステータス -->
+    <string name="status_mode">MODE</string>
+    <!-- 全消去ダイアログ -->
+    <string name="dialog_clear_title">Clear</string>
+    <string name="dialog_clear_text">Are you sure you want to delete the image?\n※Not be restored.</string>
+    <string name="dialog_clear_agree">delete</string>
+    <string name="dialog_clear_disagree">cancel</string>
+    <!-- シェアダイアログ -->
+    <string name="dialog_share_title">Preview</string>
+    <string name="dialog_share_text">Do you want to share the image with other applications?\n</string>
+    <string name="dialog_share_agree">share</string>
+    <string name="dialog_share_disagree">cancel</string>
+    <!-- 設定ダイアログ -->
+    <string name="dialog_setting_title">Setting</string>
+    <string name="dialog_setting_background">Background</string>
+    <string name="dialog_setting_close">close</string>
+</resources>

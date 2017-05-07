@@ -64,11 +64,15 @@ public class DrawSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                 StaticModel.getViewStatus() != StaticModel.ViewStatus.NONE) {
             canvas.drawOval(sens.getStatusMaskRect(), sens.getEraserRect());
         }
-        if(StaticModel.getViewStatus() == StaticModel.ViewStatus.SUB) {
+        if(StaticModel.getMenuMode() == StaticModel.MenuMode.VISIBLE &&
+                StaticModel.getViewStatus() == StaticModel.ViewStatus.SUB) {
             canvas.drawRect(sens.getSubStatusMaskRect(), sens.getEraserRect());
         }
         if(StaticModel.getDialogMode() != StaticModel.DialogMode.NONE) {
-            canvas.drawRect(sens.getDialogMaskRect(), sens.getEraserRect());
+            canvas.drawRect(sens.getFullMaskRect(), sens.getEraserRect());
+        }
+        if(StaticModel.getSettingMode() != StaticModel.SettingMode.NONE) {
+            canvas.drawRect(sens.getFullMaskRect(), sens.getEraserRect());
         }
         return canvas;
     }
@@ -117,6 +121,7 @@ public class DrawSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         float x = event.getX();
         float y = event.getY();
         if(StaticModel.getDialogMode() != StaticModel.DialogMode.NONE) return true;
+        if(StaticModel.getSettingMode() != StaticModel.SettingMode.NONE) return true;
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 eCanvas.getTouchPath().moveTo(x, y);
