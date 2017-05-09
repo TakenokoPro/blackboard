@@ -18,6 +18,7 @@ import takenoko.tech.blackboardapp.MainActivity;
 import takenoko.tech.blackboardapp.R;
 import takenoko.tech.blackboardapp.model.EnhCanvasModel;
 import takenoko.tech.blackboardapp.model.StaticModel;
+import takenoko.tech.blackboardapp.view.IOGridView;
 
 /**
  * Created by たけのこ on 2017/05/06.
@@ -105,7 +106,12 @@ public class Dialog {
         StaticModel.setDialogMode(StaticModel.DialogMode.NONE);
     }
     private static void clickToImport(ClickAction action, Activity activity) {
-        if(action == ClickAction.AGREE) {}
+        if(action == ClickAction.AGREE && StaticModel.getIoDialogMode() == StaticModel.IoDialogMode.IMPORT) {
+            UtilStrage.load(activity, IOGridView.getSelectFileName());
+        }
+        if(action == ClickAction.AGREE && StaticModel.getIoDialogMode() == StaticModel.IoDialogMode.EXPORT) {
+            UtilStrage.store(activity, IOGridView.getSelectFileName());
+        }
         StaticModel.setIoDialogMode(StaticModel.IoDialogMode.NONE);
     }
 }

@@ -32,8 +32,8 @@ public class MenuListView extends ListView {
         model.getAdapter().add(getResources().getString(R.string.menu_pen), getResources().getDrawable(R.drawable.ic_crayon), new OnClickToPen());
         model.getAdapter().add(getResources().getString(R.string.menu_eraser), getResources().getDrawable(R.drawable.ic_blackbord_ere), new OnClickToEraser());
         model.getAdapter().add(getResources().getString(R.string.menu_clear), getResources().getDrawable(R.drawable.ic_garbage_can), new OnClickToClear());
-        // model.getAdapter().add("ほぞん", getResources().getDrawable(R.drawable.ic_download), new OnClickToDownload());
         model.getAdapter().add(getResources().getString(R.string.menu_share), getResources().getDrawable(R.drawable.ic_share), new OnClickToShare());
+        model.getAdapter().add("ほぞん", getResources().getDrawable(R.drawable.ic_download), new OnClickToDownload());
         model.getAdapter().add(getResources().getString(R.string.menu_import), getResources().getDrawable(R.drawable.ic_image), new OnClickToImport());
         model.getAdapter().add(getResources().getString(R.string.menu_setting), getResources().getDrawable(R.drawable.ic_setting), new OnClickToSetting());
         setAdapter(model.getAdapter());
@@ -63,20 +63,21 @@ public class MenuListView extends ListView {
             ((MainActivity)context).upDate();
         }
     }
-    private class OnClickToDownload implements View.OnClickListener {
-        @Override
-        public void onClick(View view) {
-            Log.i(log, "OnClickToDownload");
-            Debuger.print(context, "OnClickToDownload");
-            DrawSurfaceView.share((Activity)context);
-        }
-    }
     private class OnClickToShare implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             Log.i(log, "OnClickToShare");
             Debuger.print(context, "OnClickToShare");
             DrawSurfaceView.share((Activity)context);
+        }
+    }
+    private class OnClickToDownload implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Log.i(log, "OnClickToDownload");
+            Debuger.print(context, "OnClickToDownload");
+            StaticModel.setIoDialogMode(StaticModel.IoDialogMode.EXPORT);
+            ((MainActivity)context).upDate();
         }
     }
     private class OnClickToImport implements View.OnClickListener {

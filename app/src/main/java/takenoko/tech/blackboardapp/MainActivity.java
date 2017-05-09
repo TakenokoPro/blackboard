@@ -16,6 +16,7 @@ import takenoko.tech.blackboardapp.model.StaticModel;
 import takenoko.tech.blackboardapp.util.Dialog;
 import takenoko.tech.blackboardapp.util.Setting;
 import takenoko.tech.blackboardapp.util.UtilStrage;
+import takenoko.tech.blackboardapp.view.IOGridView;
 
 /**
  * Created by たけのこ on 2017/05/04.
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.status_sub) LinearLayout statusSub;
     //-----------------------------------------------------
     @BindView(R.id.import_layout) RelativeLayout importLayout;
+    @BindView(R.id.import_title) TextView importTitle;
+    @BindView(R.id.import_text) TextView importText;
     //-----------------------------------------------------
     @BindView(R.id.dialog_layout)RelativeLayout dialogLayout;
     @BindView(R.id.dialog_title)TextView dialogTitle;
@@ -100,9 +103,15 @@ public class MainActivity extends AppCompatActivity {
         }
         switch (StaticModel.getIoDialogMode()) {
             case IMPORT:
+                IOGridView.update();
+                importTitle.setText(getResources().getString(R.string.import_title));
+                importText.setText(getResources().getString(R.string.import_text));
                 importLayout.setVisibility(View.VISIBLE);
                 break;
             case EXPORT:
+                IOGridView.update();
+                importTitle.setText(getResources().getString(R.string.export_title));
+                importText.setText(getResources().getString(R.string.export_text));
                 importLayout.setVisibility(View.VISIBLE);
                 break;
             default:

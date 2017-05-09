@@ -7,12 +7,17 @@
     <string name="menu_eraser">ERASER</string>
     <string name="menu_clear">CLEAR</string>
     <string name="menu_share">SHARE</string>
-    <string name="menu_import">IMPORT</string>
+    <string name="menu_import">SAVE</string>
     <string name="menu_setting">SETTING</string>
     <!-- ステータス -->
     <string name="status_mode">MODE</string>
     <!-- オーバーレイ -->
     <string name="overlay_loading">loading now...</string>
+    <!-- 読み込みダイアログ -->
+    <string name="import_title">LOAD</string>
+    <string name="import_text">読み込む画像を選択してください。</string>
+    <string name="export_title">SAVE</string>
+    <string name="export_text">上書きする画像を選択してください。\n※以前の画像は元に戻せません</string>
     <!-- 全消去ダイアログ -->
     <string name="dialog_clear_title">Clear</string>
     <string name="dialog_clear_text">Are you sure you want to delete the image?\n※Not be restored.</string>

@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:visibility="invisible"
     android:background="#be000000">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="400dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#FCFCFC"
         android:orientation="vertical"
         android:elevation="5dp"
@@ -29,7 +29,8 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/setting_scroll"
             android:layout_height="fill_parent"
-            android:layout_width="fill_parent">
+            android:layout_width="fill_parent"
+            android:layout_marginTop="40dp">
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_height="fill_parent"
@@ -61,7 +62,8 @@
             android:gravity="right"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:background="#FFF">
+            android:background="#FFF"
+            android:layout_alignParentBottom="true">
             <TextView
                 android:id="@+id/setting_close"
                 android:layout_width="wrap_content"
@@ -73,5 +75,5 @@
                 android:textSize="18sp"
                 android:textColor="@color/accent_material_light" />
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
