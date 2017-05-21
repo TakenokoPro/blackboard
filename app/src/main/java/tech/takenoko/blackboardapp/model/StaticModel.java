@@ -60,4 +60,8 @@ public class StaticModel {
     public enum SettingMode{ NONE, VIEW }
     @Getter @Setter
     static SettingMode settingMode = SettingMode.NONE;
+
+    /** セーブのカウント */
+    @Getter @Setter
+    static int ioCount = 0;
 }

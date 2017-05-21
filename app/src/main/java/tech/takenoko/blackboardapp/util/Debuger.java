@@ -1,7 +1,10 @@
 package tech.takenoko.blackboardapp.util;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdRequest;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,4 +38,20 @@ public class Debuger {
         });
     }
 
+    public static void admobDebug(int index, String log) {
+        switch (index) {
+            case AdRequest.ERROR_CODE_INTERNAL_ERROR:
+                Log.i(log, "ERROR_CODE_INTERNAL_ERROR");
+                break;
+            case AdRequest.ERROR_CODE_INVALID_REQUEST:
+                Log.i(log, "ERROR_CODE_INVALID_REQUEST");
+                break;
+            case AdRequest.ERROR_CODE_NETWORK_ERROR:
+                Log.i(log, "ERROR_CODE_NETWORK_ERROR");
+                break;
+            case AdRequest.ERROR_CODE_NO_FILL:
+                Log.i(log, "ERROR_CODE_NO_FILL");
+                break;
+        }
+    }
 }

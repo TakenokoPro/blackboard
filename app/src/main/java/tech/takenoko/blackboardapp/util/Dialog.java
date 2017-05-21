@@ -2,6 +2,7 @@ package tech.takenoko.blackboardapp.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
@@ -16,6 +17,7 @@ import java.io.IOException;
 
 import tech.takenoko.blackboardapp.MainActivity;
 import tech.takenoko.blackboardapp.R;
+import tech.takenoko.blackboardapp.activity.SubActivity;
 import tech.takenoko.blackboardapp.model.EnhCanvasModel;
 import tech.takenoko.blackboardapp.model.StaticModel;
 import tech.takenoko.blackboardapp.view.IOGridView;
@@ -130,9 +132,12 @@ public class Dialog {
 
     //
     private static void loadAdmob(Activity activity) {
-//        StaticModel.setAppStatus(StaticModel.AppStatus.STOP);
-//        Intent intent = new Intent(activity, SubActivity.class);
-//        activity.startActivity(intent);
-//        activity.finish();
+        StaticModel.setIoCount(StaticModel.getIoCount() + 1);
+        Log.i(log, "ioCount: " + StaticModel.getIoCount());
+        if(StaticModel.getIoCount() % 5 != 1 || StaticModel.getIoCount() > 15) return;
+        StaticModel.setAppStatus(StaticModel.AppStatus.STOP);
+        Intent intent = new Intent(activity, SubActivity.class);
+        activity.startActivity(intent);
+        activity.finish();
     }
 }

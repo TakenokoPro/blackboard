@@ -13,6 +13,8 @@ import tech.takenoko.blackboardapp.R;
 import tech.takenoko.blackboardapp.activity.SubActivity;
 import tech.takenoko.blackboardapp.model.EnhCanvasModel;
 
+import static tech.takenoko.blackboardapp.util.Debuger.admobDebug;
+
 /**
  * Created by たけのこ on 2017/05/15.
  */
@@ -20,44 +22,28 @@ import tech.takenoko.blackboardapp.model.EnhCanvasModel;
 public class InterstitialAdmob {
 
     final static String log = "----InterAdmob----";
-    static final boolean EmulatorTest = true;
 
-    private static boolean loaderdFlag = false;
-    private static String id = null;
     private static InterstitialAd mInterstitialAd;
     private static AdRequest adRequest;
 
     public static void setup(final Context context) {
-        if(EmulatorTest){
-            id = context.getString(R.string.banner_ad_test_id);
-        } else{
-            id = context.getString(R.string.banner_ad_unit_id);
-        }
         mInterstitialAd = new InterstitialAd(context);
-        mInterstitialAd.setAdUnitId(id);
-        if(EmulatorTest) {
-            adRequest = new AdRequest.Builder()
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .build();
-        } else {
-            adRequest = new AdRequest.Builder().build();
-        }
-        mInterstitialAd.loadAd(adRequest);
+        mInterstitialAd.setAdUnitId(context.getString(R.string.banner_ad_save_id));
+        adRequest = new AdRequest.Builder()
+        //        .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)  // エミュレーター
+                .build();
+        Log.i(log, "isTestDevice: " + adRequest.isTestDevice(context));
     }
     public static void showInterstitial(SubActivity activity) {
+        Log.i(log, "showInterstitial: " + mInterstitialAd.isLoaded());
         mInterstitialAd.setAdListener(new OnAdListener(activity));
-        if(mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            startMainActivity(activity);
-        }
+        mInterstitialAd.loadAd(adRequest);
     }
     private static void startMainActivity(SubActivity activity) {
         Intent intent = new Intent(activity, MainActivity.class);
         activity.startActivity(intent);
         activity.finish();
     }
-
     private static class OnAdListener extends AdListener {
 
         private SubActivity activity;
@@ -79,13 +65,17 @@ public class InterstitialAdmob {
         }
         @Override
         public void onAdFailedToLoad(int i) {
-            loaderdFlag = false;
             Log.i(log, "onAdFailedToLoad");
+            admobDebug(i, log);
+            mInterstitialAd = null;
+            adRequest = null;
+            EnhCanvasModel.clean();
+            startMainActivity(activity);
         }
         @Override
         public void onAdLoaded() {
-            loaderdFlag = true;
             Log.i(log, "onAdLoaded");
+            mInterstitialAd.show();
         }
         @Override
         public void onAdLeftApplication() {

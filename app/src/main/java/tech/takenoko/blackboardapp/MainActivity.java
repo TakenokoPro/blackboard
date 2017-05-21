@@ -1,8 +1,12 @@
 package tech.takenoko.blackboardapp;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         Log.e(log, "onCreate");
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        checkPermissions();
         Dialog.button(this);
         Setting.button(this);
         BannerAdmob.setup(this);
@@ -94,12 +101,16 @@ public class MainActivity extends AppCompatActivity {
         overlayLayout.setVisibility(View.VISIBLE);
         Strage.load(this, null);
         overlayLayout.setVisibility(View.INVISIBLE);
+        AdView adView = (AdView) findViewById(R.id.adView);
+        if ((AdView) findViewById(R.id.adView) != null) adView.resume();
     }
     @Override
     protected void onPause() {
         super.onPause();
         Log.d(log, "onDestroy  " + EnhCanvasModel.getBitmaps().size());
         Strage.store(this, null);
+        AdView adView = (AdView) findViewById(R.id.adView);
+        if ((AdView) findViewById(R.id.adView) != null) adView.pause();
     }
     @Override
     protected void onDestroy() {
@@ -109,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
             intent.setClass(this, getClass());
             startActivity(intent);
         }
+        AdView adView = (AdView) findViewById(R.id.adView);
+        if ((AdView) findViewById(R.id.adView) != null) adView.destroy();
     }
 
     public void upDate() {
@@ -264,5 +277,17 @@ public class MainActivity extends AppCompatActivity {
                 overlayLayout.setVisibility(View.INVISIBLE);
             }
         });
+    }
+
+    // パーミッション許可処理
+    void checkPermissions() {
+        boolean readExternalStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED;
+        boolean writeExternalStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED;
+        if (readExternalStorage || writeExternalStorage){
+            ActivityCompat.requestPermissions(this, new String[]{
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            }, 0);
+        }
     }
 }

@@ -1,1 +1,69 @@
-<resources></resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- メニュー -->
+    <string name="menu_open_button">MENU</string>
+    <string name="menu_close_button">CLOSE</string>
+    <string name="menu_pen">PEN</string>
+    <string name="menu_eraser">ERASER</string>
+    <string name="menu_clear">CLEAR</string>
+    <string name="menu_share">SHARE</string>
+    <string name="menu_load">LOAD</string>
+    <string name="menu_save">SAVE</string>
+    <string name="menu_setting">SETTING</string>
+    <!-- ステータス -->
+    <string name="status_mode">MODE</string>
+    <!-- オーバーレイ -->
+    <string name="overlay_loading">loading now...</string>
+    <!-- 読み込みダイアログ -->
+    <string name="load_title">LOAD</string>
+    <string name="load_text">Please select an image.</string>
+    <string name="load_delete">delete</string>
+    <string name="load_agree">done</string>
+    <string name="load_disagree">cancel</string>
+    <!-- 保存ダイアログ -->
+    <string name="save_title">SAVE</string>
+    <string name="save_text">Please select the image to be overwritten.\n※Can not be undone.</string>
+    <string name="save_delete">delete</string>
+    <string name="save_agree">done</string>
+    <string name="save_disagree">cancel</string>
+    <!-- 全消去ダイアログ -->
+    <string name="dialog_clear_title">Clear</string>
+    <string name="dialog_clear_text">Are you sure you want to delete the image?\n※Not be restored.</string>
+    <string name="dialog_clear_agree">delete</string>
+    <string name="dialog_clear_disagree">cancel</string>
+    <!-- シェアダイアログ -->
+    <string name="dialog_share_title">Preview</string>
+    <string name="dialog_share_text">Do you want to share the image with other applications?\n</string>
+    <string name="dialog_share_agree">share</string>
+    <string name="dialog_share_disagree">cancel</string>
+    <!-- 設定ダイアログ -->
+    <string name="dialog_setting_title">Setting</string>
+    <string name="dialog_setting_background">Background</string>
+    <string name="dialog_setting_flame">Flame</string>
+    <string name="dialog_setting_close">close</string>
+    <!-- シェア -->
+    <string name="chooser_title">share!!</string>
+    <string name="share_text">【BlackBoardApp！】 https://goo.gl/ThfQLP</string>
+
+    <!-- ======================================== -->
+    <string name="app_name">BlackBoardApp</string>
+    <string name="app_url">https://play.google.com/store/apps/details?id=tech.takenoko.blackboardapp</string>
+
+    <!-- インポート・エクスポート ファイル -->
+    <string name="io_file_01">storageModel1.obj</string>
+    <string name="io_file_02">storageModel2.obj</string>
+    <string name="io_file_03">storageModel3.obj</string>
+    <string name="io_file_04">storageModel4.obj</string>
+    <string name="io_file_05">storageModel5.obj</string>
+    <string name="io_file_06">storageModel6.obj</string>
+    <string name="io_file_07">storageModel7.obj</string>
+    <string name="io_file_08">storageModel8.obj</string>
+    <string name="io_file_09">storageModel9.obj</string>
+    <string name="io_file_10">storageModel10.obj</string>
+    <!-- Admob TEST -->
+    <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
+    <!--<string name="banner_ad_save_id">ca-app-pub-3940256099942544/1033173712</string>-->
+    <!-- Admob -->
+    <string name="banner_ad_unit_id">ca-app-pub-1456484850994926/2547963491</string>
+    <string name="banner_ad_save_id">ca-app-pub-1456484850994926/7191279495</string>
+</resources>
